@@ -1,0 +1,3 @@
+# Part III, Batch Computational Patterns
+
+Chapters 10 through 12 cover distributed system patterns for large-scale batch data processing covering work queues, event-based processing, and coordinated workflows.

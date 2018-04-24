@@ -1,0 +1,3 @@
+# Part II, Serving Patterns
+
+Chapters 8 and 9 cover multi-node distributed patterns for long-running serving systems like web applications. Patterns for replicating, scaling, and master election are discussed.
