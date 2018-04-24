@@ -1,3 +1,0 @@
-# Part I, Single-Node Patterns
-
-Chapters 2 through 4 discuss reusable patterns and components that occur on individual nodes within a distributed system. It covers the side-car, adapter, and ambassador single-node patterns.
