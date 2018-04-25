@@ -29,3 +29,17 @@ To achieve this, we need to focus on developing three areas:
 * Parameterizing your containers
 * Creating the API surface of your container
 * Documenting the operation of your container
+
+### 2. Ambassadors
+
+An ambassador container brokers interactions b/w the application container and the rest of the world.
+
+Using an Ambassador to:
+
+* Shard a Service
+* Service Brokering
+* Do Experimentation or Request Splitting
+
+### 3. Adapters
+
+The adapter container is used to modify the interface of the application container so that it conforms to some predefined interface that is expected of all applications.
