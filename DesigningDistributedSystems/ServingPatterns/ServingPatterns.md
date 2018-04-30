@@ -42,3 +42,46 @@ HTTP header: X-RateLimit-Remaining
 
 A secure socket layer (SSL) connection uses a certificate for authentication before sending encrypted data from a client computer to the web server. SSL termination, a form of SSL offloading, shifts some of this responsibility from the web server to a different machine.
 
+
+## Sharded Services
+
+In contrast to replicated services, with sharded services, each replica, or shard, is only capable of serving a subset of all requests. A load-balancing node, or root, is responsible for examining each request and distributing each request to the appropriate shard or shards for processing.
+
+Sharded services are generally used for building ***stateful*** services. The primary reason for sharding the data is because the size of the state is too large to be served by a single machine. Sharding enables you to scale a service in response to the size of the state that needs to be served.
+
+### Sharded Caching
+
+A sharded cache is a cache that sits b/w the user requests and the actual front end implementation.
+
+#### The Role of the Cache in System Performance
+The end user performance is determined by number of requests it can process, as well as the latency.
+
+It's always recommended that you load test your system both with and without caches to understand the impact of the cache on the overall performance of your system.
+
+#### Replicated, Sharded Caches
+
+Rather than having a single server implement each shard in the cache, a replicated service is used to implement each cache shard.
+
+### Sharding Function
+
+How do you determine which shard in the range should be used for the request?
+
+Sharding function is very similar to a hashing function, with the characteristics of:
+
+* Determinism
+* Uniformity: The distribution of outputs across the output space should be equal
+
+#### Selecting a key
+
+Determining the appropriate key for your sharding function is vital to designing your sharded system well. Determining the correct shard key requires an understanding of the requests that your expect to see.
+
+### Sharded, Replicated Serving
+
+Sharding is useful when considering any sort of service where there is more data than can fit on a single machine. 
+
+### Hot Sharding Systems
+
+Ideally the load on a sharded cache will be perfectly even, but in many cases this is not true and "hot shards" appear because organic load patterns drive more traffic to one particular shard.
+
+When this happens, with a replicated sharded cache, you can scale the cache shard to respond to the increased load. If you set up autoscaling for each cache shard, you can grow and shrink each replicated shard as the organic traffic to your service shifts around.
+
