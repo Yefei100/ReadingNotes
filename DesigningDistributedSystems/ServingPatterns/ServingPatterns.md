@@ -137,3 +137,16 @@ The need to have a significant amount of data loaded into memory in order to pro
    An event based pipeline may be highly asynchronous and divers in the things that they connect together.
    
    Example: build pipeline
+   
+## Ownership Election
+ 
+In many different systems. there is a notion of ownership where a specific process owns a specific task. 
+
+Restricting ownership to a single application limits scalability, since the task cannot be replicated, and reliability, since if the task fails, it is unavailable for a period of time. When ownership is required in your system, you need to develop a distributed system for establishing ownership. 
+   
+### The Basics of Master Election
+
+2 ways of master election:
+
+1. To implement a distributed consensus algorithm like Paxos or RAFT, but not worth doing in practice.
+2. Distributed key-value stores that have such consensus algorithms for you, like zooKeeper, etcd. The basic primitives that these systems provide is the ability to perform a compare-and-swap operation for a particular key.
